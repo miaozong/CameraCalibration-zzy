@@ -340,7 +340,6 @@ void testFisherCalibration(){
 }
 
 
-
 int main(int argc, char **argv) {
 
     testCalibration();
