@@ -22,6 +22,9 @@ public:
     // 计算单张图像的单应性矩阵H
     Eigen::Matrix3d findHomography(std::vector<cv::Point2f> &srcPoints, std::vector<cv::Point2f> &dstPoints);
 
+    // LM优化
+    Eigen::Matrix3d LMOptimization(std::vector<cv::Point2f> &srcPoints, std::vector<cv::Point2f> &dstPoints, Eigen::Matrix3d& H);
+
     // 计算单张图像H矩阵的残差来验证计算的有效性,返回值为输出结果
     double computeResudual(std::vector<cv::Point2f> &srcPoints, std::vector<cv::Point2f> &dstPoints, Eigen::Matrix3d &H);
 

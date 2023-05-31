@@ -108,12 +108,10 @@ std::vector<HomographyMatrixEstimator::M_t> HomographyMatrixEstimator::Estimate(
 
 void HomographyMatrixEstimator::Residuals(const std::vector<X_t>& points1,
                                           const std::vector<Y_t>& points2,
-                                          const M_t& H,
-                                          std::vector<double>* residuals) {
+                                          const M_t& H) {
   // CHECK_EQ(points1.size(), points2.size());
 
-  residuals->resize(points1.size());
-
+  double residuals = 0;
   // Note that this code might not be as nice as Eigen expressions,
   // but it is significantly faster in various tests.
 
@@ -141,6 +139,9 @@ void HomographyMatrixEstimator::Residuals(const std::vector<X_t>& points1,
     const double dd_0 = d_0 - pd_0 * inv_pd_2;
     const double dd_1 = d_1 - pd_1 * inv_pd_2;
 
-    (*residuals)[i] = dd_0 * dd_0 + dd_1 * dd_1;
+    residuals += dd_0 * dd_0 + dd_1 * dd_1;
   }
+
+
+  printf("\nresiduals is [%lf]\n", residuals);
 }

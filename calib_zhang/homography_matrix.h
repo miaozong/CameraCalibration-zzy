@@ -35,8 +35,7 @@ class HomographyMatrixEstimator {
   // @param H          3x3 projective matrix.
   // @param residuals  Output vector of residuals.
   static void Residuals(const std::vector<X_t>& points1,
-                        const std::vector<Y_t>& points2, const M_t& H,
-                        std::vector<double>* residuals);
+                        const std::vector<Y_t>& points2, const M_t& H);
 };
 
 
